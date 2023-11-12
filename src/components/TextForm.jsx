@@ -27,6 +27,11 @@ function TextForm(props) {
         // text.setSelectRange(0, 9999);
         navigator.clipboard.writeText(text.value);
     }
+    
+    function handleExtraSpaces(){
+        let newText = text.split(/[ ]+/);
+        setText(newText.json(" "));
+    }
 
     return (
         <>
@@ -40,6 +45,7 @@ function TextForm(props) {
                 <button className='btn btn-primary mx-2' onClick={handleLowClick}>Convert to Lowercase</button>
                 <button className='btn btn-primary mx-2' onClick={handleClearText}>Clear text</button>
                 <button className='btn btn-primary mx-2' onClick={handleCopy}>Copy text</button>
+                <button className='btn btn-primary mx-2' onClick={handleExtraSpaces}>Clear Extra Space</button>
             </div>
             <div className='conatiner my-3'>
                 <h1>Your Text Summary</h1>
