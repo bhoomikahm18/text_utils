@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import About from './components/About';
 import Navbar from './components/Navbar';
@@ -7,37 +7,56 @@ import Alert from './components/Alert';
 
 let name = 'Bhoomi'
 function App() {
-  const [mode, setMode] = useState('light');
 
-  const [alter, setAlert] = useState(null);
+  const [state, setState] = useState({
+    darkMode: false,
+    alert: null
+  });
+
+  useEffect(() => {
+    if (state.darkMode) {
+      document.body.style.backgroundColor = '#343a40';
+      document.body.style.color = 'white';
+    } else {
+      document.body.style.backgroundColor = 'white';
+      document.body.style.color = '#343a40';
+    }
+  }, [state.darkMode]);
 
   function showAlert(message, type) {
-    setAlert({
-      msg: message, type: type 
-    });
+    setState(prev => ({
+      ...prev,
+      alert: { msg: message, type: type }
+    }));
+
     setTimeout(() => {
-      setAlert(null)
-    }, 2000);
-  }
-
-  function toggleMode() {
-    if(mode === 'light') { 
-      (setMode('dark'));
-      document.body.style.backgroundColor = '#495057' 
-      showAlert("Dark Mode has been enabled", "success")
-    }else{
-      (setMode('light'));
-      document.body.style.backgroundColor = '#ffffff' 
-      showAlert("Dark Mode has been disabled", "success")
+      setState(prev => ({
+        ...prev,
+        alert: null
+      }))
+    }, 1000);
 
   }
+
+  function toggleMode(e) {
+    if (state.darkMode) {
+      setState(prev => ({
+        ...prev,
+        darkMode: false,
+      }));
+    } else {
+      setState(prev => ({
+        ...prev,
+        darkMode: true,
+      }));
+    }
   }
   return (
     <>
-      <Navbar title="Text Utils" about="About Text" mode={mode} toggleMode={toggleMode} />
+      <Navbar title="Text Utils" about="About Text" darkMode={state.darkMode} toggleMode={toggleMode} />
       <Alert />
       <div className='container my-3'>
-        <TextForm heading="Enter the text to analize" mode={mode} showAlert={showAlert}/>
+        <TextForm heading="Enter the text to analize" showAlert={showAlert} />
       </div>
       <About />
 
