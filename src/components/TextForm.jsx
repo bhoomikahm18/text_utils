@@ -6,31 +6,36 @@ function TextForm(props) {
     function handleUpClick() {
         let newText = text.toUpperCase();
         setText(newText);
+        props.showAlert("Convert to Uppercase", "success")
     }
-
+    
     function handleOnChange(event) {
         setText(event.target.value);
     }
-
+    
     function handleLowClick() {
         let newText = text.toLowerCase();
         setText(newText);
+        props.showAlert("Convert to Lowercase", "success")
     }
-
+    
     function handleClearText() {
         setText('');
+        props.showAlert("Clear all the text", "success")
     }
-
+    
     function handleCopy() {
         let text = document.getElementById("myBox");
         text.select();
         // text.setSelectRange(0, 9999);
         navigator.clipboard.writeText(text.value);
+        props.showAlert("Copies text to clipboard", "success")
     }
-
+    
     function handleExtraSpaces() {
         let newText = text.split(/[ ]+/);
         setText(newText.json(" "));
+        props.showAlert("Removed Extra Spaces", "success")
     }
 
     return (
