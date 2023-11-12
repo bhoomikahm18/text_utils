@@ -21,6 +21,13 @@ function TextForm(props) {
         setText('');
     }
 
+    function handleCopy() {
+        let text = document.getElementById("myBox");
+        text.select();
+        // text.setSelectRange(0, 9999);
+        navigator.clipboard.writeText(text.value);
+    }
+
     return (
         <>
             <div className='container'>
@@ -32,6 +39,7 @@ function TextForm(props) {
                 <button className='btn btn-primary mx-2' onClick={handleUpClick}>Convert to Uppercase</button>
                 <button className='btn btn-primary mx-2' onClick={handleLowClick}>Convert to Lowercase</button>
                 <button className='btn btn-primary mx-2' onClick={handleClearText}>Clear text</button>
+                <button className='btn btn-primary mx-2' onClick={handleCopy}>Copy text</button>
             </div>
             <div className='conatiner my-3'>
                 <h1>Your Text Summary</h1>
