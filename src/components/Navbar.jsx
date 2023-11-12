@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 function Navbar(props) {
     return (
         <>
-            <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+            <nav className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}>
                 <div className="container-fluid">
                     <a className="navbar-brand" href="#">{props.title}</a>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -18,22 +18,16 @@ function Navbar(props) {
                             <li className="nav-item">
                                 <a className="nav-link" href="#">{props.about}</a>
                             </li>
-                            <li className="nav-item dropdown">
-                                <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Dropdown
-                                </a>
-                                <ul className="dropdown-menu">
-                                    <li><a className="dropdown-item" href="#">Action</a></li>
-                                    <li><a className="dropdown-item" href="#">Another action</a></li>
-                                    <li><hr className="dropdown-divider" /></li>
-                                    <li><a className="dropdown-item" href="#">Something else here</a></li>
-                                </ul>
-                            </li>
+
                             <li className="nav-item">
                                 <a className="nav-link disabled" aria-disabled="true">Disabled</a>
                             </li>
                         </ul>
-                        
+                        <div className={`form-check form-switch ${props.darkMode ? 'text-light' : 'text-dark'}`}>
+                            <input className="form-check-input mx-2" type="checkbox" role="switch" id="flexSwitchCheckChecked" onClick={props.toggleMode} />
+                            <label className="form-check-label mx-2" htmlFor="flexSwitchCheckChecked">{`${props.darkMode ? 'Disable' : 'Enable'} Dark Mode`}</label>
+                        </div>
+
                     </div>
                 </div>
             </nav>
