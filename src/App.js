@@ -6,9 +6,9 @@ let name = 'Bhoomi'
 function App() {
   return (
     <>
-      <Navbar about="About Text" />
-      <div className='container'>
-        <TextForm />
+      <Navbar title='Text Utils' about="About Text" />
+      <div className='container my-3'>
+        <TextForm heading="Enter the text to analize"/>
       </div>
     </>
   );
