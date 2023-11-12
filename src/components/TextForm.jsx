@@ -4,11 +4,11 @@ function TextForm(props) {
     const [text, setText] = useState("Enter Text Here");
 
     function handleUpClick(){
-        console.log('On up click');
+        let newText = text.toUpperCase();
+        setText(newText);
     }
 
     function handleOnChange(event){
-        console.log('On Change');
         setText(event.target.value);
     }
 
