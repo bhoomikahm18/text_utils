@@ -5,9 +5,9 @@ function TextForm(props) {
     <>
     <div className='mb-3'>
         <h1>{props.heading}</h1>
-        <label htmlFor="myBox" className='form-label'>Example Textarea</label>
         <textarea className='form-control' id="myBox" rows="3"></textarea>
     </div>
+    <button className='btn btn-primary'>Convert to Uppercase</button>
     </>
   )
 }
