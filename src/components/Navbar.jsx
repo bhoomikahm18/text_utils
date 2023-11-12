@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import PropTypes from 'prop-types';
 
 function Navbar(props) {
     return (
@@ -15,7 +16,7 @@ function Navbar(props) {
                                 <a className="nav-link active" aria-current="page" href="#">Home</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="#">Link</a>
+                                <a className="nav-link" href="#">{props.about}</a>
                             </li>
                             <li className="nav-item dropdown">
                                 <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -41,6 +42,15 @@ function Navbar(props) {
             </nav>
         </>
     )
+}
+Navbar.propTypes = {
+    title: PropTypes.string,
+    about: PropTypes.string
+}
+
+Navbar.defaultProps = {
+    title: "Stranger",
+    about: "Soilder"
 }
 
 export default Navbar
