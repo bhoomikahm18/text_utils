@@ -15,6 +15,10 @@ function App() {
     setAlert({
       msg: message, type: type 
     });
+    setTimeout(() => {
+      setAlert(null)
+    }, 2000);
+  }
 
   function toggleMode() {
     if(mode === 'light') { 
@@ -39,7 +43,6 @@ function App() {
 
     </>
   );
-}
 }
 
 export default App;
